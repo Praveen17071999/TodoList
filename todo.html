@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="todo.css">
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="todocontainer">
+        <div class="tasklisttitle">
+            <h4> &#9778; Task Lists</h4>
+            <div class="searchcontainer">
+                <div class="icon" onclick="search()">
+                    <i class="search fa fa-search"></i>
+                </div>
+                <div class="searchinput">
+                   <input type="text" id="search" spellcheck="false">
+                </div>
+                <a onclick="clearsearch()"><i class="clear fa fa-times"  ></i></a>
+            </div>
+           
+            <select name="statusdropdown" id="statusdropdown">
+                  <option>Selected</option>
+                  <option>Not Yet Started</option>
+                  <option>Pending</option>
+                  <option>Completed</option>
+            </select>
+           
+        </div>
+        
+        
+        <div id="newtask">
+            <input id="newtaskinput" type="text" placeholder="Task to be done.." onkeypress="if(event.keyCode==13){addTask();}">
+        </div>
+        <div id="taskslist"></div>
+        <div class="canceladdbuttons">
+            <button id="cancel" onclick="clearAllTasks()">Cancel</button>
+            <button id="add" onclick="addTask()">Add Task</button>
+        </div>
+
+        
+    </div>
+    
+        
+    
+    
+</body>
+</html>

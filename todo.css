@@ -1,0 +1,387 @@
+body{
+    background-image: linear-gradient(to right, blue,violet);
+    /*background-color: rgb(81, 81, 230);*/
+    height: 100%;
+    
+    
+}
+
+.todocontainer{
+    background-color: white;
+    border-radius: 10px;
+    padding:10px;
+    min-width: 50%;
+    max-width: 50%; 
+    margin-top:10%;
+    margin-left: 25%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+} 
+
+.tasklisttitle{
+     margin-left:10px;
+     display: flex;
+     float: left;
+     height: 45px;
+}
+
+.tasklisttitle h4{
+    margin-top: 11px;
+}
+
+.canceladdbuttons{
+    align-self:flex-end;
+    padding:10px;
+
+}
+
+
+
+#cancel,#add{
+    margin:10px;
+    font-weight: bolder;
+    border-width: 0px;
+    border-radius: 5px;
+    font-size: medium;
+    padding:5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition:0.2s;
+
+}
+#cancel{
+    background-color: white;
+    color: rgb(7, 90, 185);
+}
+
+#add{
+    background-color: rgb(7, 90, 185);
+    color: white;
+}
+
+#cancel:hover , #add:hover{
+    cursor: pointer;
+}
+
+
+#newtask input{ 
+    width: 96%;
+    height: 30px;
+    margin: 2px;
+    margin-top: -2px;
+    margin-bottom: 10px;
+}
+
+.task{
+    background-color: #0d75ec;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 20px;
+    max-height: fit-content;
+    margin-bottom: 10px;   
+    width: 95%;
+    display:flex;
+    
+    
+} 
+
+@media (max-width:500px){
+    .task{
+        width:60%;
+    }
+}
+    
+
+
+.task button{
+    background: #0a2ea4;
+    color: white;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: auto;
+}
+
+
+
+.task span{
+    font-family: 'poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    margin-top: 5px;
+}
+
+#taskslist{
+    padding:1px;
+    margin-top: 2px;
+    max-height: 200px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.task label{
+    margin-left: auto;
+    
+}
+
+.status_delete{
+    margin-left: auto;
+    float: left;
+    display: flex;
+    justify-content:space-around;
+    overflow-x:visible;
+}
+.status_delete button{
+    margin-left: 5px;
+}
+
+.status_delete input{
+    width: 100px;
+}
+
+.searchcontainer{
+    padding: 5px;
+    display: flex;
+    float: left;
+    height: fit-content;
+    margin-top: 10  px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    background-color: blue;
+    border-radius: 20px;
+    width: 3%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.searchcontainer.active{
+    width: 60%;
+}
+
+.searchcontainer .icon
+{   
+    margin-top: 5px;
+    cursor: pointer;
+    padding: 2px;
+    
+}
+
+.searchinput{
+    padding: 5px;
+    height: fit-content;
+    border-radius: 20px;
+    width: 100%;
+    background-color: transparent;  
+}
+
+.searchinput input{
+    width: 100%;
+    background-color: transparent;
+    font-size: medium;
+    border: none;
+    outline: none;
+    text-decoration: underline;
+}
+
+
+.searchinput input:focus{
+    border: none;
+}
+
+.searchcontainer a i{
+    padding: 5px;
+}
+
+.searchcontainer a:hover{
+    cursor: pointer;
+}
+
+
+
+
+/*.searchcontainer{
+    margin: 2px;
+    margin-bottom: 10px;
+    border-radius:50px;
+    width: 5%;
+    height: 5%;
+    background-color: blue;
+    height: auto;
+    overflow: hidden;
+    transition: 0.5s;
+    display: flex;
+    float: left;
+    position: relative;
+    
+}
+.icon{
+
+    padding: 10px;
+    padding-right: 0;
+}
+
+.icon:hover{
+    cursor: pointer;
+}
+.searchinput{
+   display: flex;
+   justify-content: center;
+   position: relative;
+   width: 80%;
+   height: 100%;
+   border-radius: 10px;
+   background-color:transparent;
+   margin-top: 10px;
+   
+}
+.searchinput input{
+    width: 50%;
+    height: 50%;
+    margin-left: 2px;
+    background-color: transparent;
+    color: black;
+    border-width: 0;
+    border: none;
+    outline: none;
+    text-decoration: underline;
+    font-size: large;
+    
+}
+
+.searchinput i{
+    margin-left: 7px;
+}
+
+
+.searchcontainer.active{
+    width: 96.8%;
+}
+
+.searchinput i:hover{
+    cursor: pointer;
+}*/
+
+
+/* Edit Dialog Box*/
+
+#editbox {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+.editbox_content{
+    display:flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    width: 80%;
+   
+}
+
+.close {
+    color: #aaaaaa;
+    align-self: flex-end;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.save_edit{  
+    font-weight: bolder;
+    border-width: 0px;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    font-size: medium;
+    padding:5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-self: flex-end;
+    margin-right: 2%;
+    background-color:  rgb(7, 90, 185);
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    
+}
+
+#edittask{
+    padding: 10px;
+    width: 95%;
+}
+
+#edittaskinput{
+    width: 100%;
+    padding: 10px;
+}
+
+
+.defaultstatus{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: red;
+    
+}
+
+.status_options{
+    /*background: red;*/
+    padding-top: 0;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.status_options h4{
+    margin-top: 0;
+}
+
+#statuslist{
+    margin-top: 0;
+    padding-top: 0;
+    /*background: blue;*/
+    padding: 10px;
+}
+
+
+.status2{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: yellow;
+}
+
+.status3{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: green;
+}
+
+#statusdropdown{
+    height: 20px;
+    position: fixed;
+    margin-left: 520px;
+    margin-top: 10px;
+
+}
