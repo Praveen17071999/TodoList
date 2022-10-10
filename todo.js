@@ -2,17 +2,19 @@ var i=0; //iteration variables
 var j=1; //iteration variables
 var tasklist=[];
 var statuslist=[];
-
+var statusname=[];
 
 
  
 window.onload=function(){
-    if(JSON.parse(localStorage.getItem("todo-items"))!=null){
+    if((JSON.parse(localStorage.getItem("todo-items"))!=null)&&(JSON.parse(localStorage.getItem("status-name"))!=null)&&(JSON.parse(localStorage.getItem("status-items"))!=null)
+    ){
         tasklist=JSON.parse(localStorage.getItem("todo-items"));
         statuslist=JSON.parse(localStorage.getItem("status-items"));
-        
+        statusname=JSON.parse(localStorage.getItem("status-name"));
         display();
     }
+   
 }
 
 
@@ -27,11 +29,10 @@ function addTask(){
 if(document.querySelector('#newtask input').value!=""){
         tasklist.push(document.querySelector('#newtask input').value);
         statuslist.push("defaultstatus");
-        
-        
+        statusname.push("Not Yet Started");
         localStorage.setItem('todo-items',JSON.stringify(tasklist));
         localStorage.setItem('status-items',JSON.stringify(statuslist));
-       
+        localStorage.setItem('status-name',JSON.stringify(statusname));
         display();
 
 }
@@ -83,7 +84,7 @@ function deleteTask(clicked_id){
     statusname.splice(deleteid,1);
     localStorage.setItem('todo-items',JSON.stringify(tasklist));
     localStorage.setItem('status-items',JSON.stringify(statuslist));
-    
+    localStorage.setItem('status-name',JSON.stringify(statusname));
        
 }
 
@@ -169,29 +170,34 @@ function editTask(id){
     const radioButtons = document.querySelectorAll('input[name="status"]');
     for(const radioButton of radioButtons){
         if(radioButton.checked){
-            document.querySelector(newstatusid).innerText=radioButton.value;
+            
             
             if(radioButton.value=="Pending"){
                 document.querySelector(newstatusid).setAttribute('class','status2')
                 statuslist[id]="status2";
-                
-                
                 localStorage.setItem('status-items',JSON.stringify(statuslist));
+
+                statusname[id]="Pending";
+                localStorage.setItem('status-name',JSON.stringify(statusname));
+                document.querySelector(newstatusid).innerText=statusname[id];
                 break;
             }
             else if(radioButton.value=="Completed"){
                 document.querySelector(newstatusid).setAttribute('class','status3')
                 statuslist[id]="status3";
-               
                 localStorage.setItem('status-items',JSON.stringify(statuslist));
+                statusname[id]="Completed";
+                localStorage.setItem('status-name',JSON.stringify(statusname));
+                document.querySelector(newstatusid).innerText=statusname[id];
                 break;
             }
             else if(radioButton.value=="Not Yet Started"){
                 document.querySelector(newstatusid).setAttribute('class','defaultstatus')
                 statuslist[id]="defaultstatus";
-                
-                
                 localStorage.setItem('status-items',JSON.stringify(statuslist));
+                statusname[id]="Not Yet Started";
+                localStorage.setItem('status-name',JSON.stringify(statusname));
+                document.querySelector(newstatusid).innerText=statusname[id];
                 break;
             }
             
@@ -208,15 +214,14 @@ function clearAllTasks(){
         statusname=[];
         localStorage.setItem('todo-items',JSON.stringify(tasklist));
         localStorage.setItem('status-items',JSON.stringify(statuslist));
+        localStorage.setItem('status-name',JSON.stringify(statusname));
        
     }
     
 }
 
 function display(){
-    /*document.querySelectorAll(".defaultstatus").innerText="Not Yet Started";
-    document.querySelectorAll(".status2").innerText="Pending";
-    document.querySelectorAll(".status3").innerText="Completed";*/
+    
   for(;i<tasklist.length;i++){
         document.querySelector("#taskslist").innerHTML+=`
         <div class="task" id="taskid${i}" >
@@ -225,7 +230,7 @@ function display(){
             </span>
         
             <div class="status_delete">
-                <label class=${statuslist[i]} id="statusid${i}"> Not Yet Started</label>
+                <label class=${statuslist[i]} id="statusid${i}">${statusname[i]}</label>
                 <button id="editid${i}" onclick="editbox(this.id)"><i class="fa fa-edit"></i></button>
         
                 <button class="delete" id="deleteid${i}" onclick="deleteTask(this.id)">
@@ -236,9 +241,6 @@ function display(){
         `
         
     }
-
-    
-        
-    
+   
     
 }
